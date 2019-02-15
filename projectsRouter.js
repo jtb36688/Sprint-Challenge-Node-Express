@@ -87,4 +87,21 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.get("/:id/actions", (req, res) => {
+    const { id } = req.params;
+    Projects.getProjectActions(id)
+    .then(found => {
+        if (found.length > 0) {
+            res.status(200).json(found);
+        } else {
+            res.status(404).json({
+                errormessage: "Unable to find any project matching the provided ID"
+            })
+        }
+    })
+    .catch(({ code, message }) => {
+        res.status(code).json({ message });
+      });
+})
+
 module.exports = router;
