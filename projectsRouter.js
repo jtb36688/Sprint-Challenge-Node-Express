@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   Projects.get()
-    .then(projects => {
-      res.status(200).json(projects);
+    .then(found => {
+      res.status(200).json(found);
     })
     .catch(({ code, message }) => {
       res.status(code).json({ message });
@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
   if (!name || !description) {
     return res
       .status(400)
-      .json({ errormessage: "Please provide a name and a desription" });
+      .json({ errormessage: "Please provide a name and a description" });
   }
   Projects.insert(project)
     .then(insert => {
