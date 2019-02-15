@@ -6,7 +6,7 @@ module.exports = {
 };
 
 function intToBoolean(int) {
-  return int === 1 ? true : false;
+  return int === 1 ? true : false
 }
 
 function booleanToint(bool) {
@@ -14,6 +14,7 @@ function booleanToint(bool) {
 }
 
 function projectToBody(project) {
+
   const result = {
     ...project,
     completed: intToBoolean(project.completed),
